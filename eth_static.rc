@@ -1,0 +1,10 @@
+service vendor.eth_static /vendor/bin/sh /vendor/bin/eth_static.sh
+    class late_start
+    user root
+    group net_admin net_raw
+    seclabel u:r:vendor_eth_static:s0
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start vendor.eth_static

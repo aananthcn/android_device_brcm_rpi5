@@ -8,3 +8,12 @@ on fs
 
 on late-fs
     mount_all /vendor/etc/fstab.rpi5 --late
+
+on property:sys.boot_completed=1
+    restart adbd
+
+on property:persist.adb.tcp.port=5555
+    restart adbd
+
+on property:service.adb.tcp.port=5555
+    restart adbd

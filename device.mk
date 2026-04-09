@@ -189,3 +189,20 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
+
+
+# Following line were added by Aananth to enable WiFi debugging.
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.sys.usb.config=mtp,adb \
+    service.adb.tcp.port=5555 \
+    ro.adb.secure=0 \
+    persist.service.adb.enable=1
+
+PRODUCT_COPY_FILES += \
+    device/brcm/rpi5/eth_static.sh:$(TARGET_COPY_OUT_VENDOR)/bin/eth_static.sh
+
+$(call add-product-copy-files-with-permissions, \
+    device/brcm/rpi5/eth_static.sh:$(TARGET_COPY_OUT_VENDOR)/bin/eth_static.sh,0755,root,shell)
+
+PRODUCT_COPY_FILES += \
+    device/brcm/rpi5/eth_static.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/eth_static.rc

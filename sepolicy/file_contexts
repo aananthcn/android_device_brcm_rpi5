@@ -24,3 +24,6 @@
 /dev/block/sda5       u:object_r:system_block_device:s0
 /dev/block/sda6       u:object_r:system_block_device:s0
 /dev/block/sda7       u:object_r:metadata_block_device:s0
+
+# Ethernet static IP script
+/vendor/bin/eth_static\.sh    u:object_r:vendor_shell_exec:s0

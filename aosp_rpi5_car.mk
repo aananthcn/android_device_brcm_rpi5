@@ -120,3 +120,10 @@ PRODUCT_NAME := aosp_rpi5_car
 PRODUCT_BRAND := Raspberry
 PRODUCT_MODEL := Pi 5
 PRODUCT_MANUFACTURER := Raspberry
+
+# Aananth added to enable debug by default
+# Enable ADB over TCP by default
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.adb.tcp.port=5555 \
+    persist.service.adb.enable=1 \
+    service.adb.tcp.port=5555
