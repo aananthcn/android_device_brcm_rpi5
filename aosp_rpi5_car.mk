@@ -110,9 +110,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.activities_on_secondary_displays.xml \
     frameworks/native/data/etc/car_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_core_hardware.xml
 
-# Vehicle
+# Vehicle — vhal-core gRPC server + AIDL bridge replace the default fake VHAL.
+# The default service (android.hardware.automotive.vehicle@V4-default-service)
+# is intentionally NOT added here; its VINTF fragment would conflict with ours.
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V4-default-service
+    vhal-core-server \
+    android.hardware.automotive.vehicle@V4-grpc-service
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_DEVICE := rpi5

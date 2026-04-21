@@ -27,3 +27,4 @@
 
 # Ethernet static IP script
 /vendor/bin/eth_static\.sh    u:object_r:vendor_shell_exec:s0
+

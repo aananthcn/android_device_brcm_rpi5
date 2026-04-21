@@ -32,6 +32,10 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibi
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 PRODUCT_MANIFEST_FILES := $(DEVICE_PATH)/product_manifest.xml
 
+# AVB (Android Verified Boot)
+# Disabled so that adb remount works on userdebug builds without flashing keys
+BOARD_AVB_ENABLE := false
+
 # Partition sizes
 BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_USES_METADATA_PARTITION := true
@@ -56,6 +60,9 @@ TARGET_NO_RECOVERY := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += device/brcm/rpi5/sepolicy
+BOARD_SEPOLICY_DIRS += vendor/brcm/rvc-service/sepolicy
+BOARD_SEPOLICY_DIRS += vendor/brcm/rvc-app/sepolicy
+BOARD_SEPOLICY_DIRS += vendor/brcm/vhal-core/sepolicy
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Treble

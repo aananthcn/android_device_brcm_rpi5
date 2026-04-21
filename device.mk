@@ -206,3 +206,14 @@ $(call add-product-copy-files-with-permissions, \
 
 PRODUCT_COPY_FILES += \
     device/brcm/rpi5/eth_static.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/eth_static.rc
+
+
+# RVC service split: rvc_service (vendor, VHAL monitor) +
+#                    rvc_app  (system, camera + H.264 + RTP) +
+#                    rvc_evs_shim  (no-op activity, satisfies CarEvsService watchdog)
+PRODUCT_PACKAGES += \
+    rvc_service \
+    rvc_app \
+    rvc_evs_shim
+
+# VHAL replacement is handled in aosp_rpi5_car.mk after the default service is added.
