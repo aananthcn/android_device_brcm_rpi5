@@ -216,4 +216,10 @@ PRODUCT_PACKAGES += \
     rvc_app \
     rvc_evs_shim
 
+# Navigation
+PRODUCT_PACKAGES += \
+    OrganicMaps \
+    liborganicmaps \
+    OrganicMapsShim
+
 # VHAL replacement is handled in aosp_rpi5_car.mk after the default service is added.
